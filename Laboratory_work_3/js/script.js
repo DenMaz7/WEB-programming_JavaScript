@@ -334,11 +334,10 @@ console.log("");
 // 1.2.29
 function Painter(color) {
     let paintFunction = function(object) {
-        if (object.hasOwnProperty('type')) {
+        if (object.hasOwnProperty('type'))
             console.log(`Painting object with type ${object.type} to color ${color}`);
-        } else {
+        else 
             console.log(`No 'type' property occurred!`);
-        }
     };
     return paintFunction;
 }
