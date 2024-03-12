@@ -20,7 +20,8 @@ let car2 = {
     },
     tuning: false,
     "number of accidents": 2,
-    drive: function() {         //?????????????????????
+    //1.2.6
+    drive: function() {         
         console.log("I can drive anytime");
     },
 };
@@ -32,10 +33,10 @@ car1.drive = function() {
 
 car1.drive();
 
-// 1.2.6       ???????????????????????????????????
-car2.drive = function() {
-    console.log("I can drive anytime");
-};
+// // 1.2.6       ???????????????????????????????????
+// car2.drive = function() {
+//     console.log("I can drive anytime");
+// };
 
 car2.drive();
 
@@ -86,9 +87,6 @@ let myTruck3 = new Truck("green", 5500, 75, "Dodge", "Ram");
 myTruck3.trip();
 
 
-
-
-
 // 1.2.12
 class Square {
     constructor(a) { 
@@ -132,8 +130,6 @@ const square = new Square(5);
 // square.square();
 // square.info();
 
-
-
 // 1.2.16
 class Rectangle extends Square {
     // 1.2.17
@@ -165,6 +161,29 @@ class Rectangle extends Square {
         console.log("Величини кутів: ∠a = ∠b = ∠c = ∠d = 90°"); 
         this.length();
         this.square();
+    }
+
+    // 1.2.22
+    get a(){
+        return this._a;
+    }
+
+    set a(value){
+        if (value > 0)
+            this._a = value;
+        else
+            console.log("Сторона прямокутника не може бути меншою за нуль, або дорівнювати йому")
+    }
+
+    get b(){
+        return this._b;
+    }
+
+    set b(value){
+        if (value > 0)
+            this._b = value;
+        else
+            console.log("Сторона прямокутника не може бути меншою за нуль, або дорівнювати йому")
     }
 }
 
@@ -215,8 +234,6 @@ class Rhombus extends Square {
 // rhombus.info();
 
 
-
-
 // 1.2.20
 class Parallelogram extends Rhombus {
     // 1.2.21
@@ -256,18 +273,101 @@ class Parallelogram extends Rhombus {
 // parallelogram.info();
 
 
-
-
-// 1.2.21
-
-
-
-
-// 1.2.22
-
-
 // 1.2.23
-
-
+console.log("")
+Square.help();
+console.log("")
+Rectangle.help();
+console.log("")
+Rhombus.help();
+console.log("")
+Parallelogram.help();
+console.log("")
 
 // 1.2.24
+const mySquare = new Square(4);
+mySquare.info();
+console.log("")
+const rectangle = new Rectangle(7, 2);
+rectangle.info();
+console.log("")
+const rhombus = new Rhombus(4, 40, 50);
+rhombus.info();
+console.log("")
+const parallelogram = new Parallelogram(3, 7, 60, 30);
+parallelogram.info();
+console.log("")
+
+// 1.2.25
+function Triangular(a = 3, b = 4, c = 5) {
+    return { a, b, c }; 
+}
+
+// 1.2.26
+let defaultTriangle = Triangular();
+let triangle1 = Triangular(6, 10);
+let triangle2 = Triangular(5, 12, 13);
+
+console.log("Default Triangle:", defaultTriangle);
+console.log("Triangle 1:", triangle1);
+console.log("Triangle 2:", triangle2);
+
+// 1.2.27
+function PiMultiplier(multiplier) {
+    let resultFunction = function (){
+        return Math.PI * multiplier;
+    }; 
+    return resultFunction;
+}
+
+// 1.2.28
+let multiplyBy2 = PiMultiplier(2);
+let multiplyBy2_3 = PiMultiplier(2/3);
+let divideBy2 = PiMultiplier(1/2);
+
+console.log("");
+console.log("π * 2 =", multiplyBy2(3));
+console.log("π * 2/3 =", multiplyBy2_3());
+console.log("π / 2 =", divideBy2());
+console.log("");
+
+// 1.2.29
+function Painter(color) {
+    let paintFunction = function(object) {
+        if (object.hasOwnProperty('type')) {
+            console.log(`Painting object with type ${object.type} with color ${color}`);
+        } else {
+            console.log(`No 'type' property occurred!`);
+        }
+    };
+    return paintFunction;
+}
+
+// 1.2.30
+let PaintBlue = Painter('blue');
+let PaintRed = Painter('red');
+let PaintYellow = Painter('yellow');
+
+// 1.2.31
+let object1 = { 
+    maxSpeed: 280, 
+    type: 'Sportcar',
+    color: 'magenta', 
+};
+let object2 = { 
+    type: 'Truck', 
+    avgSpeed: 90, 
+    loadCapacity: 2400,
+};
+let object3 = { 
+    maxSpeed: 180,
+    color: 'purple',
+    isCar: true,
+};
+
+console.log("Painting object 1:");
+PaintBlue(object1);
+console.log("Painting object 2:");
+PaintRed(object2);
+console.log("Painting object 3:");
+PaintYellow(object3);
