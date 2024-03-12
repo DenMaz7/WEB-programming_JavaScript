@@ -335,7 +335,7 @@ console.log("");
 function Painter(color) {
     let paintFunction = function(object) {
         if (object.hasOwnProperty('type')) {
-            console.log(`Painting object with type ${object.type} with color ${color}`);
+            console.log(`Painting object with type ${object.type} to color ${color}`);
         } else {
             console.log(`No 'type' property occurred!`);
         }
