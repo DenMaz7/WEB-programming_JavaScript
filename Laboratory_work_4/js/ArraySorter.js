@@ -4,9 +4,17 @@
     arraySorter.exchangeSort = function (arr, ascending = true) {
         let comparisons = 0;
         let exchanges = 0;
+        let undefinedCount = 0;
 
         for (let i = 0; i < arr.length - 1; i++) {
             for (let j = arr.length - 1; j > i; j--) {
+                if (arr[j] === undefined || arr[j-1] === undefined) {
+                    if(arr[j] === undefined){
+                        arr.splice(j, 1);
+                        undefinedCount++;
+                    }
+                    continue; 
+                }
                 comparisons++;
                 if ((ascending && arr[j] < arr[j-1]) || (!ascending && arr[j] > arr[j-1])) {
                     let temp = arr[j-1];
@@ -17,19 +25,28 @@
             }
         }
 
-        console.log(`Exchange Sort: Comparisons - ${comparisons}, Exchanges - ${exchanges}`);
-        return arr;    
+        console.log(`Comparisons - ${comparisons}, Exchanges - ${exchanges}.`);
+        if (undefinedCount > 0) {
+            console.log(`In the array, there were ${undefinedCount} undefined elements encountered.`);
+        }
+        return arr;  
     }
-
-
 
     arraySorter.selectionSort = function (arr, ascending = true) {
         let comparisons = 0;
         let exchanges = 0;
+        let undefinedCount = 0;
 
         for (let i = 0; i < arr.length - 1; i++) {
             let minIndex = i;
             for (let j = i + 1; j < arr.length; j++) {
+                if (arr[j] === undefined || arr[j-1] === undefined) {
+                    if(arr[j] === undefined){
+                        arr.splice(j, 1);
+                        undefinedCount++;
+                    }
+                    continue; 
+                }
                 comparisons++;
                 if ((ascending && arr[j] < arr[minIndex]) || (!ascending && arr[j] > arr[minIndex])) {
                     minIndex = j;
@@ -43,15 +60,24 @@
             }            
         }
 
-        console.log(`Selection Sort: Comparisons - ${comparisons}, Exchanges - ${exchanges}`);
+        console.log(`Comparisons - ${comparisons}, Exchanges - ${exchanges}.`);
+        if (undefinedCount > 0) {
+            console.log(`In the array, there were ${undefinedCount} undefined elements encountered.`);
+        }
         return arr;
     }
-
-
     
     arraySorter.insertionSort = function(arr, ascending = true) {
         let comparisons = 0;
         let exchanges = 0;
+        let undefinedCount = 0;
+
+        for (let i = arr.length - 1; i >= 0; i--) {
+            if(arr[i] === undefined){
+                arr.splice(i, 1);
+                undefinedCount++;
+            }
+        }
 
         for (let i = 1; i < arr.length; i++) {
             let key = arr[i];
@@ -65,13 +91,24 @@
             exchanges++;
         }
 
-        console.log(`Insertion Sort: Comparisons - ${comparisons}, Exchanges - ${exchanges}`);
+        console.log(`Comparisons - ${comparisons}, Exchanges - ${exchanges}.`);
+        if (undefinedCount > 0) {
+            console.log(`In the array, there were ${undefinedCount} undefined elements encountered.`);
+        }
         return arr;
     }
 
     arraySorter.shellSort = function(arr, ascending = true) {
         let comparisons = 0;
         let exchanges = 0;
+        let undefinedCount = 0;
+
+        for (let i = arr.length - 1; i >= 0; i--) {
+            if(arr[i] === undefined){
+                arr.splice(i, 1);
+                undefinedCount++;
+            }
+        }
 
         for (let step = Math.floor(arr.length / 2); step > 0; step = Math.floor(step / 2)) {
             for (let i = step; i < arr.length; i++) {
@@ -85,7 +122,10 @@
             }
         }                                                  
 
-        console.log(`Shell Sort: Comparisons - ${comparisons}, Exchanges - ${exchanges}`);
+        console.log(`Comparisons - ${comparisons}, Exchanges - ${exchanges}.`);
+        if (undefinedCount > 0) {
+            console.log(`In the array, there were ${undefinedCount} undefined elements encountered.`);
+        }
         return arr;
     }
 
@@ -93,7 +133,15 @@
     arraySorter.quickSort = function(arr, ascending = true) {
     let comparisons = 0;
     let exchanges = 0;
+    let undefinedCount = 0;
 
+    for (let i = arr.length - 1; i >= 0; i--) {
+        if(arr[i] === undefined){
+            arr.splice(i, 1);
+            undefinedCount++;
+        }
+    }
+    
     function QuickSort(arr, first, last) {
         let middle = arr[Math.floor((first + last) / 2)];
         let i = first;
@@ -130,7 +178,10 @@
 
     QuickSort(arr, 0, arr.length - 1);
 
-    console.log(`Quick Sort: Comparisons - ${comparisons}, Exchanges - ${exchanges}`);
+    console.log(`Comparisons - ${comparisons}, Exchanges - ${exchanges}.`);
+    if (undefinedCount > 0) {
+        console.log(`In the array, there were ${undefinedCount} undefined elements encountered.`);
+    }
     return arr;
 }
 
