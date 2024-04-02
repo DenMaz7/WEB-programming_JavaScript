@@ -184,18 +184,6 @@
     }
     return arr;
 }
-
-
-
-
-
-
-
-
-
-
-    // Перевірку на undefined зробити красивим способом!!!
-
     window.arraySorter = arraySorter;
 
 })(window);
