@@ -3,11 +3,10 @@ document.addEventListener("DOMContentLoaded",
 
         let content = document.getElementById("content");
 
-
         let record = 0;
         let clickTime = 3;
-        let randomWidth = 40;
-        let randomHeight = 36;
+        let randomWidth = 200;
+        let randomHeight = 150;
         let timer;
 
         function updateContent(event) {
@@ -22,6 +21,7 @@ document.addEventListener("DOMContentLoaded",
 
             let square = document.getElementById("square");
             square.style.backgroundColor = selectedColor;
+
             if (selectedLevel === "medium") {
                 square.style.width = "70px";
                 square.style.height = "70px";
@@ -33,23 +33,22 @@ document.addEventListener("DOMContentLoaded",
                 clickTime = 1;
             }
 
-            //randomHeight += parseFloat(square.style.height) / 2;
-            //randomWidth += parseFloat(square.style.width) / 2;
+            square.addEventListener("click", moveSquare);
 
             let clickTimeElement = document.getElementById("clickTime");
             clickTimeElement.textContent = "Час для кліку: " + clickTime;
-
-            square.addEventListener("click", moveSquare);
         }
-        
-        function moveSquare() {
-            let square = document.getElementById("square");
+
+        document.querySelector("button").addEventListener("click", updateContent);
+
+        function moveSquare() {            
             record++;
             let recordElement = document.getElementById("record");
             recordElement.textContent = "Рекорд: " + record;
             
-            square.style.left = Math.floor(Math.random() * (window.innerWidth - randomWidth) + randomWidth) + "px";
-            square.style.top = Math.floor(Math.random() * (window.innerHeight - randomHeight) + randomHeight) + "px";
+            let square = document.getElementById("square");
+            square.style.left = Math.floor(Math.random() * ((window.innerWidth - randomWidth / 2) - randomWidth + 1) + randomWidth) + "px";
+            square.style.top = Math.floor(Math.random() * ((window.innerHeight - randomHeight / 2) - randomHeight + 1) + randomHeight) + "px";
             
             clearInterval(timer);
             timer = setInterval(function() {
@@ -69,9 +68,6 @@ document.addEventListener("DOMContentLoaded",
             });
             //alert(message);
         }
-
-        document.querySelector("button").addEventListener("click", updateContent);
-        //document.querySelector("div").addEventListener("click", moveSquare);
     }
 );
 
