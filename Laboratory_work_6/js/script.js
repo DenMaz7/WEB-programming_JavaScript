@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded",
             }
         
             // Функція для зміни кольору конкретної клітинки
-            function changeColors(row, col) {
+            function toggleCell(row, col) {
                 let cell = document.querySelector(`div[data-row='${row}'][data-col='${col}']`);
                 if (cell) {
                     cell.className = cell.className === 'white' ? 'black' : 'white';
