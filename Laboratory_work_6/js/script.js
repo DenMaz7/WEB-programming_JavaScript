@@ -16,10 +16,15 @@ document.addEventListener("DOMContentLoaded",
                     container.innerHTML = '';  // Очистимо контейнер перед будівництвом нової матриці
         
                     for (let i = 0; i < matrix.length; i++) {
+                        let row = [];
                         for (let j = 0; j < matrix[i].length; j++) {
                             let cell = document.createElement("div");
                             cell.className = matrix[i][j] === 1 ? "black" : "white";
+                            cell.dataset.row = i;
+                            cell.dataset.col = j;
+                            cell.addEventListener("click", changeColors);
                             container.appendChild(cell);
+                            row.push(cell);
                         }
                         container.appendChild(document.createElement("br")); // Розрив рядка для нового ряду
                     }
@@ -28,6 +33,27 @@ document.addEventListener("DOMContentLoaded",
         
                 }
             );
+
+
+
+            function changeColors() {
+                const row = parseInt(this.dataset.row, 10);
+                const col = parseInt(this.dataset.col, 10);
+                toggleCell(row, col);  // Зміна кольору натиснутої клітинки
+                // Зміна кольору сусідніх клітинок
+                toggleCell(row - 1, col);
+                toggleCell(row + 1, col);
+                toggleCell(row, col - 1);
+                toggleCell(row, col + 1);
+            }
+        
+            // Функція для зміни кольору конкретної клітинки
+            function changeColors(row, col) {
+                let cell = document.querySelector(`div[data-row='${row}'][data-col='${col}']`);
+                if (cell) {
+                    cell.className = cell.className === 'white' ? 'black' : 'white';
+                }
+            }
     
         });
 
