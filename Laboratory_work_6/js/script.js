@@ -4,37 +4,40 @@ document.addEventListener("DOMContentLoaded",
 
 
         
-        document.querySelector("button").addEventListener("click", buildMatrix);
+        document.querySelector("button")
+            .addEventListener("click", function () {
 
-
-
-
-
-
-        function buildMatrix(event) {
-
-            $ajaxifyJS.sendGetRequest("data/matrix1.json", 
+            $ajaxifyJS
+                .sendGetRequest("data/matrix1.json", function (request) {
+                    let matrix = request.matrix;
+                    let minimumSteps = request.minimumStepsRequired;
+                    
+                    let container = document.getElementById("matrixContainer");
+                    container.innerHTML = '';  // Очистимо контейнер перед будівництвом нової матриці
         
-            function (request) {
-                let matrix = request.matrix;
-                let minimumSteps = request.minimumStepsRequired;
-                
-                let container = document.getElementById("matrixContainer");
-                container.innerHTML = '';  // Очистимо контейнер перед будівництвом нової матриці
-    
-                for (let i = 0; i < matrix.length; i++) {
-                    for (let j = 0; j < matrix[i].length; j++) {
-                        let cell = document.createElement("div");
-                        cell.className = matrix[i][j] === 1 ? "black" : "white";
-                        container.appendChild(cell);
+                    for (let i = 0; i < matrix.length; i++) {
+                        for (let j = 0; j < matrix[i].length; j++) {
+                            let cell = document.createElement("div");
+                            cell.className = matrix[i][j] === 1 ? "black" : "white";
+                            container.appendChild(cell);
+                        }
+                        container.appendChild(document.createElement("br")); // Розрив рядка для нового ряду
                     }
-                    container.appendChild(document.createElement("br")); // Розрив рядка для нового ряду
+        
+                    document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + minimumSteps;
+        
                 }
+            );
     
-                document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + minimumSteps;
-    
-            });
-        }
+        });
+
+
+
+
+
+
+        
+    }
 
 
 
@@ -135,6 +138,6 @@ document.addEventListener("DOMContentLoaded",
         //     });
         //     //alert(message);
         // }
-    }
+    
 );
 
