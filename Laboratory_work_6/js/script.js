@@ -125,6 +125,7 @@ document.addEventListener("DOMContentLoaded",
                 }
                 
                 steps = 0;
+                document.getElementById("greeting").textContent = "";
                 document.getElementById("timer").textContent = "Час: 0:00";
                 document.getElementById("steps").textContent = "Кроки: 0";
                 document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + minimumSteps;
