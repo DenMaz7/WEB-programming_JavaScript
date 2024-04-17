@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded",
 
         function restart() {
             stopTimer();
-            document.getElementById("matrixContainer") = '';
+            document.getElementById("matrixContainer").innerHTML = '';
             document.querySelector("button").removeEventListener("click", restart);
             document.querySelector("button").addEventListener("click", startGame);
         }
@@ -160,8 +160,10 @@ document.addEventListener("DOMContentLoaded",
                 document.getElementById("timer").textContent = "Час: 0:00";
                 document.getElementById("steps").textContent = "Кроки: 0";
                 document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + minimumSteps;
-                document.querySelector("button").removeEventListener("click", startGame);
-                document.querySelector("button").addEventListener("click", restart);
+                let button = document.querySelector("button");
+                button.removeEventListener("click", startGame);
+                button.addEventListener("click", restart);
+                button.textContent = "Переграти";
                 
                 /*let button = document.createElement("button");
                 button.id = "button";
