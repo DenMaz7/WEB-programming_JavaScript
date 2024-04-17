@@ -1,5 +1,5 @@
 (function (global) {
-
+    
     let ajaxifyJS = {}
 
     function getRequestObject() {
