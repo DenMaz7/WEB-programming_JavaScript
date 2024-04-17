@@ -79,8 +79,8 @@ document.addEventListener("DOMContentLoaded",
         function restart() {
             stopTimer();
             document.getElementById("matrixContainer").innerHTML = '';
-            document.getElementById("timer").textContent = "Час: 0:00";
-            document.getElementById("steps").textContent = "Кроки: 0";
+            //document.getElementById("timer").textContent = "Час: 0:00";
+            //document.getElementById("steps").textContent = "Кроки: 0";
             startGame();
         }
 
@@ -127,7 +127,10 @@ document.addEventListener("DOMContentLoaded",
                 }
                 
                 steps = 0;
-                document.getElementById("greeting").remove();
+                let greeting = document.getElementById("greeting");
+                if (greeting) {
+                    greeting.remove();
+                }
                 document.getElementById("timer").textContent = "Час: 0:00";
                 document.getElementById("steps").textContent = "Кроки: 0";
                 document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + minimumSteps;
