@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded",
     function(event) {
 
 
-        let timer = null;
+        let timer;
         let startTime;
         let elapsedTime = 0;
         let steps = 0;
@@ -10,18 +10,19 @@ document.addEventListener("DOMContentLoaded",
         let currentJsonFile;
 
         function startTimer() {
-            if (timer !== null) return; // Якщо таймер уже запущений, не робимо нічого
-            startTime = Date.now() - elapsedTime;
-            timer = setInterval(updateTimerDisplay, 1000); // Оновлюємо час кожну секунду
+            if (timer !== null) return; 
+            elapsedTime = 0; 
+            startTime = Date.now();
+            timer = setInterval(updateTimerDisplay, 1000);
         }
         
         function stopTimer() {
             if (timer !== null) {
-                clearInterval(timer);
+                clearInterval(timer); 
                 timer = null;
+                elapsedTime = 0; 
             }
         }
-        //
         
         function updateTimerDisplay() {
             elapsedTime = Date.now() - startTime;
@@ -79,8 +80,6 @@ document.addEventListener("DOMContentLoaded",
             stopTimer();
             document.getElementById("matrixContainer").innerHTML = '';
             startGame();
-            //document.querySelector("button").removeEventListener("click", restart);
-            //document.querySelector("button").addEventListener("click", startGame);
         }
 
 
@@ -94,43 +93,7 @@ document.addEventListener("DOMContentLoaded",
             startTimer();
 
 
-            /*let matrix = {
-                matrix: [
-                  [1, 1, 1, 1, 1],
-                  [0, 0, 1, 0, 0],
-                  [0, 0, 1, 0, 1],
-                  [0, 0, 0, 1, 1],
-                  [0, 0, 0, 0, 1]
-                ],
-                minimumStepsRequired: 7
-            }
-
-            
-            //document.body.innerHTML += '<div id="timer">Час: 0:00</div><p id="steps">Кроки: 0</p>';
-            let container = document.getElementById("matrixContainer");
-            //container.innerHTML += '<div id="timer">Час: 0:00</div><p id="steps">Кроки: 0</p>'; 
-            for (let i = 0; i < matrix.matrix.length; i++) {
-                for (let j = 0; j < matrix.matrix[i].length; j++) {
-                    let cell = document.createElement("div");
-                    cell.className = matrix.matrix[i][j] === 1 ? "black" : "white";
-                    cell.dataset.row = i;
-                    cell.dataset.col = j;
-                    cell.addEventListener("click", changeColors);
-                    container.appendChild(cell);
-                }
-                container.appendChild(document.createElement("br")); 
-            }
-            
-            document.getElementById("timer").textContent = "Час: 0:00";
-            document.getElementById("steps").textContent = "Кроки: 0";
-            document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + matrix.minimumStepsRequired;
-            document.querySelector("button").remove();
-            
-            let button = document.createElement("button");
-            button.id = "button";
-            button.textContent = "Переграти";
-            button.addEventListener("click", restart);  
-            document.body.appendChild(button);*/
+     
         if(newLevel){
             currentJsonFile = getRandomJsonFile();
             document.getElementById("matrixContainer").innerHTML = '';
