@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded",
                 timer = null;
             }
         }
+        //
         
         function updateTimerDisplay() {
             elapsedTime = Date.now() - startTime;
