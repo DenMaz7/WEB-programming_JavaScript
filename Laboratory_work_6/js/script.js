@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded",
                 }
                 
                 steps = 0;
-                document.getElementById("greeting").textContent = "";
+                document.getElementById("greeting").remove();
                 document.getElementById("timer").textContent = "Час: 0:00";
                 document.getElementById("steps").textContent = "Кроки: 0";
                 document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + minimumSteps;
@@ -133,12 +133,6 @@ document.addEventListener("DOMContentLoaded",
                 button.removeEventListener("click", startGame);
                 button.addEventListener("click", restart);
                 button.textContent = "Переграти";
-                
-                /*let button = document.createElement("button");
-                button.id = "button";
-                button.textContent = "Переграти";
-                button.addEventListener("click", restart);  
-                document.body.appendChild(button);*/
             })
         }
 
