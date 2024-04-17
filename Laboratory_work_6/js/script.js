@@ -2,63 +2,162 @@ document.addEventListener("DOMContentLoaded",
     function(event) {
 
 
+        let timer = null;
+        let startTime;
+        let elapsedTime = 0;
+        let steps = 0;
+
+        function startTimer() {
+            if (timer !== null) return; // Якщо таймер уже запущений, не робимо нічого
+            startTime = Date.now() - elapsedTime;
+            timer = setInterval(updateTimerDisplay, 1000); // Оновлюємо час кожну секунду
+        }
+        
+        function stopTimer() {
+            if (timer !== null) {
+                clearInterval(timer);
+                timer = null;
+            }
+        }
+        
+        function updateTimerDisplay() {
+            elapsedTime = Date.now() - startTime;
+            let seconds = Math.floor(elapsedTime / 1000);
+            let minutes = Math.floor(seconds / 60);
+            seconds = seconds % 60;
+            document.getElementById('timer').textContent = `Час: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+
+
+        function checkAllWhite() {
+            return document.querySelectorAll('.black').length === 0;
+        }
+
+
+
+
+        function changeColors() {
+            steps++;
+            let countSteps = document.getElementById("steps");
+            countSteps.textContent = `Кроки: ${steps}`;
+
+            const row = parseInt(this.dataset.row, 10);
+            const col = parseInt(this.dataset.col, 10);
+
+            changeColorInTheCell(row, col);  
+            changeColorInTheCell(row - 1, col);
+            changeColorInTheCell(row + 1, col);
+            changeColorInTheCell(row, col - 1);
+            changeColorInTheCell(row, col + 1);
+
+            if (checkAllWhite()) {
+                document.getElementById("steps").remove();
+                document.getElementById("stepInfo").textContent = `Вітаю! Ви пройшли цей рівень ${steps}-ма кроками за ${document.getElementById("timer").textContent.split("Час: ")[1].trim()}`;
+                document.getElementById("timer").remove();
+                document.getElementById("button").textContent = "Наступний рівень";
+
+                //alert("Ви виграли!");  
+            }
+        }
+    
+        function changeColorInTheCell(row, col) {
+            let cell = document.querySelector(`div[data-row='${row}'][data-col='${col}']`);
+            if (cell) {
+                cell.className = cell.className === 'white' ? 'black' : 'white';
+            }
+        }
+
+
+        function restart() {
+            stopTimer();
+            container.innerHTML = '';
+
+        }
+
 
         
         document.querySelector("button")
             .addEventListener("click", function () {
 
+                startTimer();
+
+
+                /*let matrix = {
+                    matrix: [
+                      [1, 1, 1, 1, 1],
+                      [0, 0, 1, 0, 0],
+                      [0, 0, 1, 0, 1],
+                      [0, 0, 0, 1, 1],
+                      [0, 0, 0, 0, 1]
+                    ],
+                    minimumStepsRequired: 7
+                }
+
+                
+                //document.body.innerHTML += '<div id="timer">Час: 0:00</div><p id="steps">Кроки: 0</p>';
+                let container = document.getElementById("matrixContainer");
+                //container.innerHTML += '<div id="timer">Час: 0:00</div><p id="steps">Кроки: 0</p>'; 
+                for (let i = 0; i < matrix.matrix.length; i++) {
+                    for (let j = 0; j < matrix.matrix[i].length; j++) {
+                        let cell = document.createElement("div");
+                        cell.className = matrix.matrix[i][j] === 1 ? "black" : "white";
+                        cell.dataset.row = i;
+                        cell.dataset.col = j;
+                        cell.addEventListener("click", changeColors);
+                        container.appendChild(cell);
+                    }
+                    container.appendChild(document.createElement("br")); 
+                }
+                
+                document.getElementById("timer").textContent = "Час: 0:00";
+                document.getElementById("steps").textContent = "Кроки: 0";
+                document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + matrix.minimumStepsRequired;
+                document.querySelector("button").remove();
+                
+                let button = document.createElement("button");
+                button.id = "button";
+                button.textContent = "Переграти";
+                button.addEventListener("click", restart);  
+                document.body.appendChild(button);*/
+
             $ajaxifyJS
                 .sendGetRequest("data/matrix1.json", function (request) {
+
+                    
+
                     let matrix = request.matrix;
                     let minimumSteps = request.minimumStepsRequired;
                     
                     let container = document.getElementById("matrixContainer");
-                    container.innerHTML = '';  // Очистимо контейнер перед будівництвом нової матриці
         
+
+
                     for (let i = 0; i < matrix.length; i++) {
-                        //let row = [];
                         for (let j = 0; j < matrix[i].length; j++) {
                             let cell = document.createElement("div");
                             cell.className = matrix[i][j] === 1 ? "black" : "white";
-                            //cell.dataset.row = i;
-                            //cell.dataset.col = j;
+                            cell.dataset.row = i;
+                            cell.dataset.col = j;
                             cell.addEventListener("click", changeColors);
                             container.appendChild(cell);
-                            //row.push(cell);
                         }
-                        container.appendChild(document.createElement("br")); // Розрив рядка для нового ряду
+                        container.appendChild(document.createElement("br")); 
                     }
-        
+                    
+                    document.getElementById("timer").textContent = "Час: 0:00";
+                    document.getElementById("steps").textContent = "Кроки: 0";
                     document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + minimumSteps;
-        
+                    document.querySelector("button").remove();
+                    
+                    let button = document.createElement("button");
+                    button.id = "button";
+                    button.textContent = "Переграти";
+                    button.addEventListener("click", restart);  
+                    document.body.appendChild(button);
+                        
                 }
             );
-
-
-
-            function changeColors() {
-
-                let cell = document.querySelector('.black');
-                cell.className = cell.className === 'white' ? 'black' : 'white';
-
-                /*const row = parseInt(this.dataset.row, 10);
-                const col = parseInt(this.dataset.col, 10);
-                toggleCell(row, col);  // Зміна кольору натиснутої клітинки
-                // Зміна кольору сусідніх клітинок
-                toggleCell(row - 1, col);
-                toggleCell(row + 1, col);
-                toggleCell(row, col - 1);
-                toggleCell(row, col + 1);*/
-            }
-        
-            // Функція для зміни кольору конкретної клітинки
-          /*  function toggleCell(row, col) {
-                let cell = document.querySelector(`div[data-row='${row}'][data-col='${col}']`);
-                if (cell) {
-                    cell.className = cell.className === 'white' ? 'black' : 'white';
-                }
-            }*/
-    
         });
 
 
