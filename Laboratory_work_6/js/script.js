@@ -77,32 +77,64 @@ document.addEventListener("DOMContentLoaded",
         }
 
 
-        
-        document.querySelector("button")
-            .addEventListener("click", function () {
-
-                startTimer();
+        function startGame() {
+            startTimer();
 
 
-                /*let matrix = {
-                    matrix: [
-                      [1, 1, 1, 1, 1],
-                      [0, 0, 1, 0, 0],
-                      [0, 0, 1, 0, 1],
-                      [0, 0, 0, 1, 1],
-                      [0, 0, 0, 0, 1]
-                    ],
-                    minimumStepsRequired: 7
+            /*let matrix = {
+                matrix: [
+                  [1, 1, 1, 1, 1],
+                  [0, 0, 1, 0, 0],
+                  [0, 0, 1, 0, 1],
+                  [0, 0, 0, 1, 1],
+                  [0, 0, 0, 0, 1]
+                ],
+                minimumStepsRequired: 7
+            }
+
+            
+            //document.body.innerHTML += '<div id="timer">Час: 0:00</div><p id="steps">Кроки: 0</p>';
+            let container = document.getElementById("matrixContainer");
+            //container.innerHTML += '<div id="timer">Час: 0:00</div><p id="steps">Кроки: 0</p>'; 
+            for (let i = 0; i < matrix.matrix.length; i++) {
+                for (let j = 0; j < matrix.matrix[i].length; j++) {
+                    let cell = document.createElement("div");
+                    cell.className = matrix.matrix[i][j] === 1 ? "black" : "white";
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener("click", changeColors);
+                    container.appendChild(cell);
                 }
+                container.appendChild(document.createElement("br")); 
+            }
+            
+            document.getElementById("timer").textContent = "Час: 0:00";
+            document.getElementById("steps").textContent = "Кроки: 0";
+            document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + matrix.minimumStepsRequired;
+            document.querySelector("button").remove();
+            
+            let button = document.createElement("button");
+            button.id = "button";
+            button.textContent = "Переграти";
+            button.addEventListener("click", restart);  
+            document.body.appendChild(button);*/
+
+        $ajaxifyJS
+            .sendGetRequest("data/matrix1.json", function (request) {
 
                 
-                //document.body.innerHTML += '<div id="timer">Час: 0:00</div><p id="steps">Кроки: 0</p>';
+
+                let matrix = request.matrix;
+                let minimumSteps = request.minimumStepsRequired;
+                
                 let container = document.getElementById("matrixContainer");
-                //container.innerHTML += '<div id="timer">Час: 0:00</div><p id="steps">Кроки: 0</p>'; 
-                for (let i = 0; i < matrix.matrix.length; i++) {
-                    for (let j = 0; j < matrix.matrix[i].length; j++) {
+    
+
+
+                for (let i = 0; i < matrix.length; i++) {
+                    for (let j = 0; j < matrix[i].length; j++) {
                         let cell = document.createElement("div");
-                        cell.className = matrix.matrix[i][j] === 1 ? "black" : "white";
+                        cell.className = matrix[i][j] === 1 ? "black" : "white";
                         cell.dataset.row = i;
                         cell.dataset.col = j;
                         cell.addEventListener("click", changeColors);
@@ -113,161 +145,20 @@ document.addEventListener("DOMContentLoaded",
                 
                 document.getElementById("timer").textContent = "Час: 0:00";
                 document.getElementById("steps").textContent = "Кроки: 0";
-                document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + matrix.minimumStepsRequired;
+                document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + minimumSteps;
                 document.querySelector("button").remove();
                 
                 let button = document.createElement("button");
                 button.id = "button";
                 button.textContent = "Переграти";
                 button.addEventListener("click", restart);  
-                document.body.appendChild(button);*/
-
-            $ajaxifyJS
-                .sendGetRequest("data/matrix1.json", function (request) {
-
-                    
-
-                    let matrix = request.matrix;
-                    let minimumSteps = request.minimumStepsRequired;
-                    
-                    let container = document.getElementById("matrixContainer");
-        
-
-
-                    for (let i = 0; i < matrix.length; i++) {
-                        for (let j = 0; j < matrix[i].length; j++) {
-                            let cell = document.createElement("div");
-                            cell.className = matrix[i][j] === 1 ? "black" : "white";
-                            cell.dataset.row = i;
-                            cell.dataset.col = j;
-                            cell.addEventListener("click", changeColors);
-                            container.appendChild(cell);
-                        }
-                        container.appendChild(document.createElement("br")); 
-                    }
-                    
-                    document.getElementById("timer").textContent = "Час: 0:00";
-                    document.getElementById("steps").textContent = "Кроки: 0";
-                    document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + minimumSteps;
-                    document.querySelector("button").remove();
-                    
-                    let button = document.createElement("button");
-                    button.id = "button";
-                    button.textContent = "Переграти";
-                    button.addEventListener("click", restart);  
-                    document.body.appendChild(button);
-                        
-                }
-            );
-        });
-
-
-
-
+                document.body.appendChild(button);
+            })
+        }
 
 
         
-    }
+        document.querySelector("button").addEventListener("click", startGame);
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // let content = document.getElementById("content");
-
-        // let record = 0;
-        // let clickTime = 3;
-        // let randomWidth = 200;
-        // let randomHeight = 150;
-        // let timer;
-
-        // function updateContent(event) {
-        //     let selectedColor = document.getElementById("color").value;
-        //     let selectedLevel = document.getElementById("level").value;
-
-        //     if (!selectedColor || !selectedLevel) {
-        //         return;
-        //     }
-
-        //     content.innerHTML = "<p id='record'>Рекорд: 0</p><p id='clickTime'>Час для кліку: </p><div id='square'></div>";
-
-        //     let square = document.getElementById("square");
-        //     square.style.backgroundColor = selectedColor;
-
-        //     if (selectedLevel === "medium") {
-        //         square.style.width = "70px";
-        //         square.style.height = "70px";
-        //         clickTime = 2;
-        //     }
-        //     else if (selectedLevel === "hard") {
-        //         square.style.width = "40px";
-        //         square.style.height = "40px";
-        //         clickTime = 1;
-        //     }
-
-        //     square.addEventListener("click", moveSquare);
-
-        //     let clickTimeElement = document.getElementById("clickTime");
-        //     clickTimeElement.textContent = "Час для кліку: " + clickTime;
-        // }
-
-        // document.querySelector("button").addEventListener("click", updateContent);
-
-        // function moveSquare() {            
-        //     record++;
-        //     let recordElement = document.getElementById("record");
-        //     recordElement.textContent = "Рекорд: " + record;
-            
-        //     let square = document.getElementById("square");
-        //     square.style.left = Math.floor(Math.random() * ((window.innerWidth - randomWidth / 2) - randomWidth + 1) + randomWidth) + "px";
-        //     square.style.top = Math.floor(Math.random() * ((window.innerHeight - randomHeight / 2) - randomHeight + 1) + randomHeight) + "px";
-            
-        //     clearInterval(timer);
-        //     timer = setInterval(function() {
-        //         clearInterval(timer);
-        //         square.removeEventListener("click", moveSquare);
-        //         gameOver();
-        //     }, clickTime * 1000);
-        // }
-        
-        // function gameOver() {
-        //     let message = "Ви програли! Ваш рекорд: " + record;
-        //     content.innerHTML = `<div id="gameOver"><h3>${message}</h3><button id="button">Нова гра</button></div>`;
-           
-        //     let reloadButton = document.getElementById("button");
-        //     reloadButton.addEventListener("click", function() {
-        //         window.location.reload();
-        //     });
-        //     //alert(message);
-        // }
-    
-);
 
