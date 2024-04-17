@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded",
     function(event) {
 
 
-        let timer;
+        let timer = null;
         let startTime;
         let elapsedTime = 0;
         let steps = 0;
