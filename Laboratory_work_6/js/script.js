@@ -76,8 +76,9 @@ document.addEventListener("DOMContentLoaded",
         function restart() {
             stopTimer();
             document.getElementById("matrixContainer").innerHTML = '';
-            document.querySelector("button").removeEventListener("click", restart);
-            document.querySelector("button").addEventListener("click", startGame);
+            startGame();
+            //document.querySelector("button").removeEventListener("click", restart);
+            //document.querySelector("button").addEventListener("click", startGame);
         }
 
 
