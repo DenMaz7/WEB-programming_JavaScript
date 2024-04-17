@@ -79,6 +79,8 @@ document.addEventListener("DOMContentLoaded",
         function restart() {
             stopTimer();
             document.getElementById("matrixContainer").innerHTML = '';
+            document.getElementById("timer").textContent = "Час: 0:00";
+            document.getElementById("steps").textContent = "Кроки: 0";
             startGame();
         }
 
