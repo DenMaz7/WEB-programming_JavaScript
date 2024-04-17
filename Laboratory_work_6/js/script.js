@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded",
         let startTime;
         let elapsedTime = 0;
         let steps = 0;
+        let newLevel = true;
+        let currentJsonFile;
 
         function startTimer() {
             if (timer !== null) return; // Якщо таймер уже запущений, не робимо нічого
@@ -57,6 +59,7 @@ document.addEventListener("DOMContentLoaded",
                 document.getElementById("stepInfo").textContent = `Вітаю! Ви пройшли цей рівень ${steps}-ма кроками за ${document.getElementById("timer").textContent.split("Час: ")[1].trim()}`;
                 document.getElementById("timer").remove();
                 document.getElementById("button").textContent = "Наступний рівень";
+                newLevel = true;
 
                 //alert("Ви виграли!");  
             }
@@ -73,9 +76,15 @@ document.addEventListener("DOMContentLoaded",
         function restart() {
             stopTimer();
             container.innerHTML = '';
-
+            startGame();
         }
 
+
+        function getRandomJsonFile() {
+            const jsonFiles = ['data/matrix1.json', 'data/matrix2.json', 'data/matrix3.json'];
+            const randomIndex = Math.floor(Math.random() * jsonFiles.length);
+            return jsonFiles[randomIndex];
+        }
 
         function startGame() {
             startTimer();
@@ -118,9 +127,13 @@ document.addEventListener("DOMContentLoaded",
             button.textContent = "Переграти";
             button.addEventListener("click", restart);  
             document.body.appendChild(button);*/
+        if(newLevel){
+            currentJsonFile = getRandomJsonFile();
+            newLevel = false;
+        }
 
         $ajaxifyJS
-            .sendGetRequest("data/matrix1.json", function (request) {
+            .sendGetRequest(currentJsonFile, function (request) {
 
                 
 
