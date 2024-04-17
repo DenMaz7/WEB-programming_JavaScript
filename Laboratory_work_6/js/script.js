@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded",
             changeColorInTheCell(row, col + 1);
 
             if (checkAllWhite()) {
+                stopTimer();
                 document.getElementById("steps").textContent = "";
                 document.getElementById("stepInfo").textContent = `Вітаю! Ви пройшли цей рівень ${steps}-ма кроками за ${document.getElementById("timer").textContent.split("Час: ")[1].trim()}`;
                 document.getElementById("timer").textContent = "";
@@ -132,6 +133,7 @@ document.addEventListener("DOMContentLoaded",
             document.body.appendChild(button);*/
         if(newLevel){
             currentJsonFile = getRandomJsonFile();
+            document.getElementById("matrixContainer").innerHTML = '';
             newLevel = false;
         }
 
