@@ -55,12 +55,13 @@ document.addEventListener("DOMContentLoaded",
             changeColorInTheCell(row, col + 1);
 
             if (checkAllWhite()) {
-                document.getElementById("steps").remove();
+                document.getElementById("steps").textContent = "";
                 document.getElementById("stepInfo").textContent = `Вітаю! Ви пройшли цей рівень ${steps}-ма кроками за ${document.getElementById("timer").textContent.split("Час: ")[1].trim()}`;
-                document.getElementById("timer").remove();
+                document.getElementById("timer").textContent = "";
                 document.getElementById("button").textContent = "Наступний рівень";
                 newLevel = true;
-
+                document.querySelector("button").removeEventListener("click", restart);
+                document.querySelector("button").addEventListener("click", startGame);
                 //alert("Ви виграли!");  
             }
         }
@@ -158,6 +159,7 @@ document.addEventListener("DOMContentLoaded",
                     container.appendChild(document.createElement("br")); 
                 }
                 
+                steps = 0;
                 document.getElementById("timer").textContent = "Час: 0:00";
                 document.getElementById("steps").textContent = "Кроки: 0";
                 document.getElementById("stepInfo").textContent = "Мінімальна кількість кроків для перемоги: " + minimumSteps;
