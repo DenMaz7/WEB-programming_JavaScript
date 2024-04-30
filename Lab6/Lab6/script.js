@@ -32,11 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log(matrix[i][j]);
                 }
             }
-        })
 
-        generateBoard();
-        isPlaying = true;
-        startTimer();
+            generateBoard();
+            isPlaying = true;
+            startTimer();
+
+        })   
     }
 
     function generateBoard() {
