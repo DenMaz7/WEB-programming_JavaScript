@@ -28,7 +28,7 @@
         insertHtml(selector, html);
     }
 
-    const insertProoerty = function (string, propName, propValue) {
+    const insertProperty = function (string, propName, propValue) {
         const propToReplace = "{{" + propName + "}}";
         string = string.replace(new RegExp(propToReplace, "g", propValue));
         return string;
@@ -77,8 +77,8 @@
             let html = categoryHtml;
             const full_name = "" + categories[i].full_name;
             const short_name = categories[i].short_name;
-            html = insertHtml(html, full_name);
-            html = insertHtml(html, short_name);
+            html = insertProperty(html, full_name);
+            html = insertProperty(html, short_name);
             finalHtml += html;
         }
 
