@@ -77,8 +77,8 @@
             let html = categoryHtml;
             const full_name = "" + categories[i].full_name;
             const short_name = categories[i].short_name;
-            html = insertProperty(html, full_name);
-            html = insertProperty(html, short_name);
+            html = insertProperty(html, "full_name", full_name);
+            html = insertProperty(html, "short_name", short_name);
             finalHtml += html;
         }
 
