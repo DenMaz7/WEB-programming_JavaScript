@@ -30,7 +30,7 @@
 
     const insertProperty = function (string, propName, propValue) {
         const propToReplace = "{{" + propName + "}}";
-        string = string.replace(new RegExp(propToReplace, "g", propValue));
+        string = string.replace(new RegExp(propToReplace, "g"), propValue);
         return string;
     }
 
