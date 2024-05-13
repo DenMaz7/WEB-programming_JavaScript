@@ -17,11 +17,11 @@
         targetElem.innerHTML = html;
     }
 
-    const showLoading = function (selector) {
-        let html = "<div class='text-center'>";
-        html += "<img src='../images/ajax-loader.gif'</div>";
-        insertHtml(selector, html);
-    }
+    // const showLoading = function (selector) {
+    //     let html = "<div class='text-center'>";
+    //     html += "<img src='../images/ajax-loader.gif'</div>";
+    //     insertHtml(selector, html);
+    // }
 
     document.addEventListener("DOMContentLoaded", function(event) {
         
