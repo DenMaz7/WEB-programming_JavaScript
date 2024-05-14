@@ -14,7 +14,9 @@
     const allCategoriesUrl = "data/categories.json";
     //const categoriesTitleHtml = "snippets/home-snippets.html";
     const categoryHtml = "snippets/category-snippets.html";
-
+    const catalogItemsUrl = "data/catalog/";
+    const catalogItemsTitleHtml = "snippets/catalog-items-title.html";
+    const catalogItemHtml = "snippets/catalog-item.html";
 
 
     const insertHtml = function (selector, html) {
@@ -57,6 +59,14 @@
             buildAndShowCategoriesHTML);
     };
 
+    bh.loadCatalogItems = function (categoryShort) {
+        showLoading("#main");
+
+        $ajaxifyJS.sendGetRequest(
+            catalogItemsUrl + categoryShort + ".json",
+            buildAndShowCatalogItemsHTML);
+    };
+
 
     function buildAndShowCategoriesHTML (categories) {
         $ajaxifyJS.sendGetRequest(
@@ -79,6 +89,49 @@
             const short_name = categories[i].short_name;
             html = insertProperty(html, "full_name", full_name);
             html = insertProperty(html, "short_name", short_name);
+            finalHtml += html;
+        }
+
+        finalHtml += "</div>";
+        return finalHtml;
+    }
+
+
+    function buildAndShowCatalogItemsHTML (categoryCatalogItems) {
+        $ajaxifyJS.sendGetRequest(
+            catalogItemsTitleHtml,
+            function (catalogItemsTitleHtml) {
+                $ajaxifyJS.sendGetRequest(
+                    catalogItemHtml,
+                    function (catalogItemHtml) {
+                        const catalogItemViewHtml = buildCatalogItemsViewHtml(categoryCatalogItems, catalogItemsTitleHtml, catalogItemHtml);
+                        insertHtml("#main", catalogItemViewHtml);
+                    },
+                    false);
+            },
+            false);
+    }
+
+
+    function buildCatalogItemsViewHtml (categoryCatalogItems, catalogItemsTitleHtml, catalogItemHtml) {
+        
+        catalogItemsTitleHtml = insertProperty(catalogItemsTitleHtml, "full_name", categoryCatalogItems.category.full_name);
+
+        let finalHtml = catalogItemsTitleHtml;
+        finalHtml += "<div class='catalog'>";
+
+        const catalogItems = categoryCatalogItems.catalog_items;
+        const catShortName = categoryCatalogItems.category.short_name;
+
+        for (let i = 0; i < catalogItems.length; i++) {
+            
+            let html = catalogItemHtml;
+            html = insertProperty(html, "catShortName", catShortName);
+            html = insertProperty(html, "short_name", short_name);
+            html = insertProperty(html, "full_name", catalogItems[i].full_name);
+            html = insertProperty(html, "author", catalogItems[i].author);
+            html = insertProperty(html, "description", catalogItems[i].description);
+            html = insertProperty(html, "price", catalogItems[i].price);
             finalHtml += html;
         }
 
