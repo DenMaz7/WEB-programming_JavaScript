@@ -36,6 +36,21 @@
         return string;
     }
 
+    const switchCatalogToActive = function () {
+        
+        let classes = document.querySelector("#navHomeButton").className;
+        classes = classes.replace(new RegExp("active", "g"), "");
+        document.querySelector("#navHomeButton").className = classes;
+
+        classes = document.querySelector("#navCatalogButton").className;
+        if (classes.indexOf("active") == -1) {
+            classes += "active";
+            document.querySelector("#navCatalogButton").className = classes;
+        }
+    }
+
+    
+
     document.addEventListener("DOMContentLoaded", function(event) {
         
         showLoading("#main");
@@ -72,6 +87,8 @@
         $ajaxifyJS.sendGetRequest(
             categoryHtml,
             function (categoryHtml) {
+                switchCatalogToActive();
+                
                 const categoriesViewHtml = buildCategoriesViewHtml(categories, categoryHtml);
                 insertHtml("#main", categoriesViewHtml);
             },
