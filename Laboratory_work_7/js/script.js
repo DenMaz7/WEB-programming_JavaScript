@@ -36,7 +36,7 @@
         return string;
     }
 
-    const switchCatalogToActive = function () {
+    const switchActive = function (activeElement) {
         
         // let classes = document.querySelector("#navHomeButton").className;
         // classes = classes.replace(new RegExp("active", "g"), "");
@@ -50,13 +50,14 @@
         const homeButton = document.querySelector("#navHomeButton");
         const catalogButton = document.querySelector("#navCatalogButton");
     
-        if (homeButton.classList.contains("active")) {
+        if (activeElement === "catalog") {
             homeButton.classList.remove("active");
             catalogButton.classList.add("active");
-        } else if (catalogButton.classList.contains("active")) {
+        } else if (activeElement === "home") {
             catalogButton.classList.remove("active");
             homeButton.classList.add("active");
-        }
+        }    
+      
     }
 
     
@@ -75,6 +76,8 @@
         $ajaxifyJS.sendGetRequest(
             homeHtml,
             function (responseText) {
+                switchActive("home");
+                
                 document.querySelector("#main").innerHTML = responseText;
             },
             false
@@ -117,7 +120,7 @@
         $ajaxifyJS.sendGetRequest(
             categoryHtml,
             function (categoryHtml) {
-                switchCatalogToActive();
+                switchActive("catalog");
 
                 const categoriesViewHtml = buildCategoriesViewHtml(categories, categoryHtml);
                 insertHtml("#main", categoriesViewHtml);
@@ -151,7 +154,7 @@
                 $ajaxifyJS.sendGetRequest(
                     catalogItemHtml,
                     function (catalogItemHtml) {
-                        switchCatalogToActive();
+                        switchActive("catalog");
 
                         const catalogItemViewHtml = buildCatalogItemsViewHtml(categoryCatalogItems, catalogItemsTitleHtml, catalogItemHtml);
                         insertHtml("#main", catalogItemViewHtml);
