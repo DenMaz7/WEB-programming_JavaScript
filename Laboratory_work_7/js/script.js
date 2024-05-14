@@ -56,6 +56,9 @@
         showLoading("#main");
         loadHomeHtml();
         document.querySelector("#navHomeButton").addEventListener("click", loadHomeHtml);
+        document.querySelector("#navLogo").addEventListener("click", function (){
+            window.location.reload();
+        });
     });
 
     loadHomeHtml= function () {
