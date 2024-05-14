@@ -56,10 +56,9 @@
         showLoading("#main");
         loadHomeHtml();
         document.querySelector("#navHomeButton").addEventListener("click", loadHomeHtml);
-        document.querySelector("#navCatalogButton").addEventListener("click", loadCatalogCategories);
     });
 
-    bh.loadHomeHtml= function () {
+    loadHomeHtml= function () {
         $ajaxifyJS.sendGetRequest(
             homeHtml,
             function (responseText) {
@@ -68,7 +67,21 @@
             false
         );
     };
+    
 
+    bh.loadRandomCategory = function() {
+        showLoading("#main");
+    
+        $ajaxifyJS.sendGetRequest(
+            allCategoriesUrl,
+            function(categories) {
+                const randomIndex = Math.floor(Math.random() * categories.length);
+                const randomCategory = categories[randomIndex];
+                bh.loadCatalogItems(randomCategory.short_name);
+            }
+        );
+    };
+    
 
     bh.loadCatalogCategories = function () {
         showLoading("#main");
