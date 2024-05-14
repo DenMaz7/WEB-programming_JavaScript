@@ -54,7 +54,11 @@
     document.addEventListener("DOMContentLoaded", function(event) {
         
         showLoading("#main");
+        loadHomeHtml();
 
+    });
+
+    loadHomeHtml= function () {
         $ajaxifyJS.sendGetRequest(
             homeHtml,
             function (responseText) {
@@ -62,8 +66,7 @@
             },
             false
         );
-
-    });
+    };
 
 
     bh.loadCatalogCategories = function () {
