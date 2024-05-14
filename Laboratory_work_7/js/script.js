@@ -44,7 +44,7 @@
 
         classes = document.querySelector("#navCatalogButton").className;
         if (classes.indexOf("active") == -1) {
-            classes += "active";
+            classes += " active";
             document.querySelector("#navCatalogButton").className = classes;
         }
     }
@@ -88,7 +88,7 @@
             categoryHtml,
             function (categoryHtml) {
                 switchCatalogToActive();
-                
+
                 const categoriesViewHtml = buildCategoriesViewHtml(categories, categoryHtml);
                 insertHtml("#main", categoriesViewHtml);
             },
