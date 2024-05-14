@@ -1,18 +1,9 @@
-// document.addEventListener("DOMContentLoaded", 
-//     function(event) {
-        
-//     }
-// );
-
-
-
 (function (global){
 
     const bh = {};
 
     const homeHtml = "snippets/home-snippets.html";
     const allCategoriesUrl = "data/categories.json";
-    //const categoriesTitleHtml = "snippets/home-snippets.html";
     const categoryHtml = "snippets/category-snippets.html";
     const catalogItemsUrl = "data/catalog/";
     const catalogItemsTitleHtml = "snippets/catalog-items-title.html";
@@ -38,15 +29,6 @@
 
     const switchActive = function (activeElement) {
         
-        // let classes = document.querySelector("#navHomeButton").className;
-        // classes = classes.replace(new RegExp("active", "g"), "");
-        // document.querySelector("#navHomeButton").className = classes;
-
-        // classes = document.querySelector("#navCatalogButton").className;
-        // if (classes.indexOf("active") == -1) {
-        //     classes += " active";
-        //     document.querySelector("#navCatalogButton").className = classes;
-        // }
         const homeButton = document.querySelector("#navHomeButton");
         const catalogButton = document.querySelector("#navCatalogButton");
     
@@ -60,7 +42,6 @@
       
     }
 
-    
 
     document.addEventListener("DOMContentLoaded", function(event) {
         
@@ -77,7 +58,7 @@
             homeHtml,
             function (responseText) {
                 switchActive("home");
-                
+
                 document.querySelector("#main").innerHTML = responseText;
             },
             false

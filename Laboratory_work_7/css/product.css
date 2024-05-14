@@ -12,13 +12,13 @@ body {
 
 .navbar-nav {
   display: flex;
-  align-items: center; /* Розмістити елементи вертикально по центру */
+  align-items: center; 
 }
 
 .nav-link {
-  font-size: 24px; /* Збільшити розмір тексту */
-  text-align: center; /* Розмістити текст посередині блоку */
-  padding: 0 10px; /* Додатковий відступ для кращого вигляду */
+  font-size: 24px; 
+  text-align: center; 
+  padding: 0 10px; 
 }
 
 
