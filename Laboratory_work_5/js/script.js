@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded",
         let randomWidth = 200;
         let randomHeight = 150;
         let timer;
-
+        
         function updateContent(event) {
             let selectedColor = document.getElementById("color").value;
             let selectedLevel = document.getElementById("level").value;
@@ -50,12 +50,9 @@ document.addEventListener("DOMContentLoaded",
             square.style.left = Math.floor(Math.random() * ((window.innerWidth - randomWidth / 2) - randomWidth + 1) + randomWidth) + "px";
             square.style.top = Math.floor(Math.random() * ((window.innerHeight - randomHeight / 2) - randomHeight + 1) + randomHeight) + "px";
             
+
             clearInterval(timer);
-            timer = setInterval(function() {
-                clearInterval(timer);
-                square.removeEventListener("click", moveSquare);
-                gameOver();
-            }, clickTime * 1000);
+            startTimer(clickTime);
         }
         
         function gameOver() {
@@ -68,6 +65,23 @@ document.addEventListener("DOMContentLoaded",
             });
             //alert(message);
         }
+
+
+        function startTimer(timeLimit) {
+            let timeLeft = timeLimit;
+            document.getElementById("clickTime").textContent = "Час для кліку: " + timeLeft + " секунд";
+
+            timer = setInterval(function() {
+                timeLeft -= 0.1;
+                document.getElementById("clickTime").textContent = "Час для кліку: " + timeLeft.toFixed(1) + " секунд";
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    square.removeEventListener("click", moveSquare);
+                    gameOver();
+                }
+            }, 100);
+        }                      
+        
     }
 );
 
