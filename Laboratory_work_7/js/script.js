@@ -138,6 +138,8 @@
                 $ajaxifyJS.sendGetRequest(
                     catalogItemHtml,
                     function (catalogItemHtml) {
+                        switchCatalogToActive();
+
                         const catalogItemViewHtml = buildCatalogItemsViewHtml(categoryCatalogItems, catalogItemsTitleHtml, catalogItemHtml);
                         insertHtml("#main", catalogItemViewHtml);
                     },
