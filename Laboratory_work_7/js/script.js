@@ -55,10 +55,11 @@
         
         showLoading("#main");
         loadHomeHtml();
-
+        document.querySelector("#navHomeButton").addEventListener("click", loadHomeHtml);
+        document.querySelector("#navCatalogButton").addEventListener("click", loadCatalogCategories);
     });
 
-    loadHomeHtml= function () {
+    bh.loadHomeHtml= function () {
         $ajaxifyJS.sendGetRequest(
             homeHtml,
             function (responseText) {
