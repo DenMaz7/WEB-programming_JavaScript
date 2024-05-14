@@ -38,14 +38,24 @@
 
     const switchCatalogToActive = function () {
         
-        let classes = document.querySelector("#navHomeButton").className;
-        classes = classes.replace(new RegExp("active", "g"), "");
-        document.querySelector("#navHomeButton").className = classes;
+        // let classes = document.querySelector("#navHomeButton").className;
+        // classes = classes.replace(new RegExp("active", "g"), "");
+        // document.querySelector("#navHomeButton").className = classes;
 
-        classes = document.querySelector("#navCatalogButton").className;
-        if (classes.indexOf("active") == -1) {
-            classes += " active";
-            document.querySelector("#navCatalogButton").className = classes;
+        // classes = document.querySelector("#navCatalogButton").className;
+        // if (classes.indexOf("active") == -1) {
+        //     classes += " active";
+        //     document.querySelector("#navCatalogButton").className = classes;
+        // }
+        const homeButton = document.querySelector("#navHomeButton");
+        const catalogButton = document.querySelector("#navCatalogButton");
+    
+        if (homeButton.classList.contains("active")) {
+            homeButton.classList.remove("active");
+            catalogButton.classList.add("active");
+        } else if (catalogButton.classList.contains("active")) {
+            catalogButton.classList.remove("active");
+            homeButton.classList.add("active");
         }
     }
 
