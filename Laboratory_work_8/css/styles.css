@@ -7,9 +7,6 @@ body {
   
 .container {
     max-width: 960px;
-    background-color: #292929;
-    justify-content: center;
-    align-items: center;
 }
   
 .navbar-nav {
@@ -40,11 +37,10 @@ body {
   
   
 .main {
-    background-color:#292929;
     padding: 20px;
-    display: flex;
-    align-items: center;
+    background-color: #292929;
     justify-content: center;
+    align-items: center;
 }
     
 .footer {
@@ -130,10 +126,10 @@ p {
     height: 24px;
     font-size: 18px;
     padding: 0;
-    background-color: #63ca27;
+    background-color: #ffd700;
     border: none;
     border-radius: 4px;
-    color: #cddaff;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,7 +138,7 @@ p {
 }
 
 .carousel-button:hover {
-    background-color: #6b9d07;
+    background-color: #ffd700;
 }
 
 #indicators {
@@ -162,7 +158,7 @@ p {
 
 .indicator.active,
 .indicator:hover {
-    background-color: #63ca27;
+    background-color: #ffd700;
 }
 
 
