@@ -1,5 +1,27 @@
 document.addEventListener("DOMContentLoaded",
     function(event) {
+
+        const hamburger = document.querySelector(".hamburger");
+        const menu = document.querySelector(".menu");
+        let timer = 0;
+        function toggleMenu() {
+            menu.classList.toggle("active");
+        }
+        hamburger.addEventListener("click", toggleMenu);
+        document.addEventListener("click", function (event) {
+            const isClickInsideMenu = menu.contains(event.target);
+            const isClickInsideHamburger = hamburger.contains(event.target);
+            if (!isClickInsideMenu && !isClickInsideHamburger) {
+                menu.classList.remove("active");
+            }
+        });
+        window.addEventListener("resize", function (event) {
+            if (window.innerWidth <= 768) {
+                menu.classList.remove("active");
+            }
+        });
+
+
         const photos = ['https://place-hold.it/1080x640/585cdf','https://place-hold.it/640x640/f7a325','https://place-hold.it/640x640/f56038', 'https://place-hold.it/640x640/cddaff&', 'https://place-hold.it/640x640'];
         const carousel = document.getElementById('carousel');
 
