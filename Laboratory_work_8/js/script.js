@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded",
         });
 
 
-        const photos = ['https://place-hold.it/1080x640/585cdf','https://place-hold.it/640x640/f7a325','https://place-hold.it/640x640/f56038', 'https://place-hold.it/640x640/cddaff&', 'https://place-hold.it/640x640'];
+        const photos = ['images/carousel1.jpg','images/carousel2.jpg','images/carousel3.jpg', 'images/carousel4.jpg'];
         const carousel = document.getElementById('carousel');
         const slidesContainer = carousel.querySelector('#carousel-slides');
         const dotsContainer = carousel.querySelector('#indicators');
