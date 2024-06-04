@@ -58,6 +58,10 @@ body {
     margin-top: 20px;
 }
 
+p {
+    color: #fff;
+}
+
 
 
 
@@ -71,60 +75,92 @@ body {
 .hamburger div {
     width: 25px;
     height: 3px;
-    background-color: #fff;
     margin: 3px 0;
 }
 
-/* Стилі для каруселі */
-.carousel {
+#carousel {
+    padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#carousel-wrapper {
     position: relative;
+    max-height: 1200px;
+}
+
+#carousel-slides {
+    display: flex;
+    flex-direction: row;
     overflow: hidden;
 }
 
-.slide {
-    display: none;
-    text-align: center;
-    padding: 50px 0;
-}
-
-.slide.active {
-    display: block;
-}
-
-.arrows {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+#carousel-slides img {
     width: 100%;
+    object-fit: cover;
+}
+.slide {
+    max-width: 0;
+    transition: max-width 0.7s ease;
+}
+#carousel-control {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(32, 32, 32, 0.25);
     display: flex;
-    justify-content: space-between;
-    z-index: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 12px 0;
 }
 
-.arrows .arrow {
+.carousel-button {
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    padding: 0;
+    background-color: #3232a9;
+    border: none;
+    border-radius: 4px;
+    color: #cddaff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    color: #fff;
-    font-size: 30px;
+    transition: background-color 0.2s;
 }
 
-.indicators {
-    text-align: center;
-    margin-top: 20px;
+.carousel-button:hover {
+    background-color: #121295;
+}
+
+#indicators {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
 }
 
 .indicator {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    margin: 0 5px;
+    background-color: #cddaff;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-.indicator.active {
-    background-color: #f00;
+.indicator.active,
+.indicator:hover {
+    background-color: #3232a9;
 }
+
+
+
 
 /* Стилі для Large та Medium */
 .large {
