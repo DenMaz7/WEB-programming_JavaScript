@@ -1,59 +1,70 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #E6E6FA;
+/* styles.css */
+/* Стилі для навігації */
+#navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
 }
 
-#button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
+ul.menu {
+    list-style-type: none;
+}
+
+ul.menu.large {
+    display: flex;
+}
+
+ul.menu.large li {
+    margin-right: 20px;
+}
+
+/* Стилі для гамбургера */
+.hamburger {
+    display: none;
+    flex-direction: column;
     cursor: pointer;
 }
-#button:hover {
-    background-color: #45a049;
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
 }
 
-#timer, #steps {
-    text-align: left;
-    position: absolute; 
+/* Стилі для каруселі */
+#carousel {
+    /* Стилі для каруселі */
 }
 
-#timer {
-    top: 60px; 
+/* Стилі для Large та Medium */
+.large {
+    display: none;
 }
 
-#steps {
-    top: 90px; 
+.medium {
+    display: none;
 }
 
-#matrixContainer div {
-    width: 90px;
-    height: 90px;
-    display: inline-block;
-    margin: 2px;
+@media (max-width: 768px) {
+    ul.menu.large {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .medium {
+        display: block;
+    }
 }
 
-.black {
-    background-color: black;
-}
-
-.white {
-    background-color: white;
-}
-
-#greeting {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    color: #333; 
-    border: 1px solid #ccc;
-    border-radius: 8px; 
-    padding: 20px; 
-    margin: 20px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    line-height: 1.6;
+@media (min-width: 768px) {
+    .large {
+        display: block;
+    }
 }
