@@ -4,48 +4,70 @@
     <meta charset="utf-8">
 	<title>Book Harbour</title>
 	<link rel="stylesheet" href="css/styles.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 </head>
 
 <body>
-    <nav id="navigation">
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
+    <header class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
+        <div class="container">
+            <div class="offcanvas-body">
+                <ul class="navbar-nav flex-grow-1 justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href="#">
+                    <img id="navLogo" class="bi" width="77" height="77" src="images/BookHarbour.png">
+                    </a></li>
+                    <li class="nav-item"><a id="navHomeButton" class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a id="navCatalogButton" class="nav-link" href="#">Catalog</a></li>
+                    <li class="nav-item">About us</li>
+                    <li class="nav-item">FAQ</li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="#">
+                        <img class="bi" width="40" height="40" src="images/Cart.png">
+                    </a></li>
+                </ul>
+                <button class="hamburger">&#9776;</button>
+            </div>
         </div>
-        <ul class="menu large">
-            <li>Пункт 1</li>
-            <li>Пункт 2</li>
-            <li>Пункт 3</li>
-            <li>Пункт 4</li>
-            <li>Пункт 5</li>
-        </ul>
-    </nav>
-    <div id="carousel" class="carousel">
-        <div class="slide active">Слайд 1</div>
-        <div class="slide">Слайд 2</div>
-        <div class="slide">Слайд 3</div>
-        <div class="arrows">
-            <div class="arrow prev" onclick="prevSlide()">&#10094;</div>
-            <div class="arrow next" onclick="nextSlide()">&#10095;</div>
+    </header>
+
+    <div id="main">
+        <div id="carousel" class="carousel">
+            <div class="slide active">Слайд 1</div>
+            <div class="slide">Слайд 2</div>
+            <div class="slide">Слайд 3</div>
+            <div class="arrows">
+                <div class="arrow prev" onclick="prevSlide()">&#10094;</div>
+                <div class="arrow next" onclick="nextSlide()">&#10095;</div>
+            </div>
+            <div class="indicators">
+                <div class="indicator active" onclick="changeSlide(0)"></div>
+                <div class="indicator" onclick="changeSlide(1)"></div>
+                <div class="indicator" onclick="changeSlide(2)"></div>
+            </div>
         </div>
-        <div class="indicators">
-            <div class="indicator active" onclick="changeSlide(0)"></div>
-            <div class="indicator" onclick="changeSlide(1)"></div>
-            <div class="indicator" onclick="changeSlide(2)"></div>
+        
+        <div class="large">
+            <!-- Зображення для Large-пристроїв -->
+            <img src="images/catalog/detectives/detectives.jpg" alt="Large Image 1">
+            <img src="images/catalog/fantasy/fantasy.jpg" alt="Large Image 2">
         </div>
-    </div>
-    <div class="large">
-        <!-- Зображення для Large-пристроїв -->
-        <img src="images/catalog/detectives/detectives.jpg" alt="Large Image 1">
-        <img src="images/catalog/fantasy/fantasy.jpg" alt="Large Image 2">
-    </div>
-    <div class="medium">
-        <!-- Зображення для Medium-пристроїв -->
-        <img src="images/catalog/horrors_trillers/horrors_trillers.jpg" alt="Medium Image 1">
-        <img src="images/catalog/speculative_fiction/speculative_fiction.jpg" alt="Medium Image 2">
+        <div class="medium">
+            <!-- Зображення для Medium-пристроїв -->
+            <img src="images/catalog/horrors_trillers/horrors_trillers.jpg" alt="Medium Image 1">
+            <img src="images/catalog/speculative_fiction/speculative_fiction.jpg" alt="Medium Image 2">
+        </div>
+    
     </div>
 
+    <footer class="bg-dark border-bottom" data-bs-theme="dark">
+        <div class="footer-content">
+            <img width="50" height="50" src="images/BookHarbour.png" alt="Лого магазину">
+            <p>&copy; 2024</p>
+        </div>
+    </footer>
 	<script src="js/script.js"></script>
 </body>
 </html>
