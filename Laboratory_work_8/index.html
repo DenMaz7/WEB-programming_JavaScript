@@ -21,14 +21,29 @@
             <li>Пункт 5</li>
         </ul>
     </nav>
-    <div id="carousel">
-        <!-- Карусель слайдів -->
+    <div id="carousel" class="carousel">
+        <div class="slide active">Слайд 1</div>
+        <div class="slide">Слайд 2</div>
+        <div class="slide">Слайд 3</div>
+        <div class="arrows">
+            <div class="arrow prev" onclick="prevSlide()">&#10094;</div>
+            <div class="arrow next" onclick="nextSlide()">&#10095;</div>
+        </div>
+        <div class="indicators">
+            <div class="indicator active" onclick="changeSlide(0)"></div>
+            <div class="indicator" onclick="changeSlide(1)"></div>
+            <div class="indicator" onclick="changeSlide(2)"></div>
+        </div>
     </div>
     <div class="large">
         <!-- Зображення для Large-пристроїв -->
+        <img src="images/catalog/detectives/detectives.jpg" alt="Large Image 1">
+        <img src="images/catalog/fantasy/fantasy.jpg" alt="Large Image 2">
     </div>
     <div class="medium">
         <!-- Зображення для Medium-пристроїв -->
+        <img src="images/catalog/horrors_trillers/horrors_trillers.jpg" alt="Medium Image 1">
+        <img src="images/catalog/speculative_fiction/speculative_fiction.jpg" alt="Medium Image 2">
     </div>
 
 	<script src="js/script.js"></script>

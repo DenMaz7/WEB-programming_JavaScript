@@ -36,8 +36,54 @@ ul.menu.large li {
 }
 
 /* Стилі для каруселі */
-#carousel {
-    /* Стилі для каруселі */
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.slide.active {
+    display: block;
+}
+
+.arrows {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.arrows .arrow {
+    cursor: pointer;
+    color: #fff;
+    font-size: 30px;
+}
+
+.indicators {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.indicator.active {
+    background-color: #f00;
 }
 
 /* Стилі для Large та Medium */
