@@ -1,3 +1,8 @@
+:root {
+    --primary-color: #292929;
+}
+
+
 body {
     margin: 0;
     padding: 0;
