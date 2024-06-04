@@ -7,6 +7,7 @@ body {
   
 .container {
     max-width: 960px;
+    background-color: #292929;
 }
   
 .navbar-nav {
@@ -166,13 +167,12 @@ p {
 
 
 /* Стилі для Large та Medium */
-.large {
-    display: none;
+.large, .medium {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.medium {
-    display: none;
-}
 
 @media (max-width: 768px) {
     ul.menu.large {
