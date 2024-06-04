@@ -130,7 +130,7 @@ p {
     height: 24px;
     font-size: 18px;
     padding: 0;
-    background-color: #3232a9;
+    background-color: #63ca27;
     border: none;
     border-radius: 4px;
     color: #cddaff;
@@ -142,7 +142,7 @@ p {
 }
 
 .carousel-button:hover {
-    background-color: #121295;
+    background-color: #6b9d07;
 }
 
 #indicators {
@@ -155,14 +155,14 @@ p {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #cddaff;
+    background-color: #686868;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 .indicator.active,
 .indicator:hover {
-    background-color: #3232a9;
+    background-color: #63ca27;
 }
 
 
