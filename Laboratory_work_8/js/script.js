@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded",
     function(event) {
 
         const hamburger = document.querySelector(".hamburger");
-        const menu = document.querySelector(".menu");
+        const menu = document.querySelector("#menu");
         let timer = 0;
         function toggleMenu() {
             menu.classList.toggle("active");
