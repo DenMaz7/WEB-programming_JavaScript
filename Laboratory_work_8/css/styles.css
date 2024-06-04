@@ -37,6 +37,7 @@ body {
   
   
 .main {
+    background-color:#292929;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -59,10 +60,10 @@ body {
     margin-bottom: 10px;
     margin-top: 20px;
 }
-/* 
+
 p {
     color: #fff;
-} */
+}
 
 
 
