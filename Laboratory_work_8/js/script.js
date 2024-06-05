@@ -1,13 +1,17 @@
 document.addEventListener("DOMContentLoaded",
     function(event) {
-
         const hamburger = document.querySelector(".hamburger");
         const menu = document.querySelector("#menu");
+        const carousel = document.getElementById("carousel");
+        const slidesContainer = carousel.querySelector("#carousel-slides");
+        const dotsContainer = carousel.querySelector('#indicators');
+
+        const photos = ['images/carousel1.jpg','images/carousel2.jpg','images/carousel3.jpg', 'images/carousel4.jpg'];
+        const lagre = 768;
         let timer = 0;
-        function toggleMenu() {
-            menu.classList.toggle("active");
-        }
+        
         hamburger.addEventListener("click", toggleMenu);
+
         document.addEventListener("click", function (event) {
             const isClickInsideMenu = menu.contains(event.target);
             const isClickInsideHamburger = hamburger.contains(event.target);
@@ -15,17 +19,20 @@ document.addEventListener("DOMContentLoaded",
                 menu.classList.remove("active");
             }
         });
+
         window.addEventListener("resize", function (event) {
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= lagre) {
                 menu.classList.remove("active");
             }
         });
 
 
-        const photos = ['images/carousel1.jpg','images/carousel2.jpg','images/carousel3.jpg', 'images/carousel4.jpg'];
-        const carousel = document.getElementById('carousel');
-        const slidesContainer = carousel.querySelector('#carousel-slides');
-        const dotsContainer = carousel.querySelector('#indicators');
+        function toggleMenu() {
+            menu.classList.toggle("active");
+        }
+
+       
+
 
         photos.forEach(function(photo) {
             const slide = document.createElement('div');
@@ -46,13 +53,18 @@ document.addEventListener("DOMContentLoaded",
                 indicators.appendChild(div);
             }
         }
+
+
         carousel.querySelector('#prev-btn').addEventListener('click', function() {
             showSlide(currentSlideIndex - 1);
         });
         carousel.querySelector('#next-btn').addEventListener('click', function() {
             showSlide(currentSlideIndex + 1);
         });
+
+
         const dots = carousel.querySelectorAll('.indicator');
+        
         dots.forEach(function(dot, index) {
             dot.addEventListener('click', function() {
                 showSlide(index);
@@ -61,6 +73,8 @@ document.addEventListener("DOMContentLoaded",
 
         let currentSlideIndex = 0;
         showSlide(currentSlideIndex);
+
+
         function showSlide(index) {
             const slides = carousel.querySelectorAll('.slide');
             if (index < 0) {
