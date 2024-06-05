@@ -12,10 +12,9 @@ document.addEventListener("DOMContentLoaded",
         
         hamburger.addEventListener("click", toggleMenu);
 
- 
         window.addEventListener("resize", function (event) {
             if (window.innerWidth <= lagre) {
-                menu.classList.remove("active");
+                menu.classList.toggle("active");
             }
         });
 
@@ -25,13 +24,10 @@ document.addEventListener("DOMContentLoaded",
             menu.classList.toggle("active");
         }
 
-       
-
-
+    
         photos.forEach(function(photo) {
             const slide = document.createElement('div');
-            slide.classList.add('slide');
-        
+            slide.classList.add('slide');;
             const img = document.createElement('img');
             img.src = photo;
             slide.appendChild(img);
@@ -89,7 +85,6 @@ document.addEventListener("DOMContentLoaded",
             });
             slides[index].style.maxWidth = '600px';
             
-
 
             currentSlideIndex = index; 
             timer = setInterval(() => {

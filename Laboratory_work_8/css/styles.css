@@ -111,7 +111,7 @@ p {
 
 .slide {
     transition: transform 0.7s ease;
-    transform: translateX(0); /* Початкове положення */
+    transform: translateX(0); 
 }
 
 #carousel-control {
@@ -207,7 +207,11 @@ footer {
     margin-top: 20px;
 }
 
-@media(max-width:768px){
+
+
+  
+
+@media screen and (max-width: 768px) {
     .hamburger {
         display: block;
     }
