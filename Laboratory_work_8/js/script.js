@@ -12,22 +12,17 @@ document.addEventListener("DOMContentLoaded",
         
         hamburger.addEventListener("click", toggleMenu);
 
-        document.addEventListener("click", function (event) {
-            const isClickInsideMenu = menu.contains(event.target);
-            const isClickInsideHamburger = hamburger.contains(event.target);
-            if (!isClickInsideMenu && !isClickInsideHamburger) {
-                menu.classList.remove("active");
-            }
-        });
+ 
 
-        window.addEventListener("resize", function (event) {
-            if (window.innerWidth <= lagre) {
-                menu.classList.remove("active");
-            }
-        });
+        // window.addEventListener("resize", function (event) {
+        //     if (window.innerWidth <= lagre) {
+        //         menu.classList.remove("active");
+        //     }
+        // });
 
 
         function toggleMenu() {
+            hamburger.classList.toggle("active");
             menu.classList.toggle("active");
         }
 
