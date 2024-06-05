@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded",
     function(event) {
         const hamburger = document.querySelector(".hamburger");
-        const menu = document.querySelector("#menu");
+        const menu = document.querySelector(".menu");
         const carousel = document.getElementById("carousel");
         const slidesContainer = carousel.querySelector("#carousel-slides");
         const dotsContainer = carousel.querySelector('#indicators');
@@ -13,12 +13,11 @@ document.addEventListener("DOMContentLoaded",
         hamburger.addEventListener("click", toggleMenu);
 
  
-
-        // window.addEventListener("resize", function (event) {
-        //     if (window.innerWidth <= lagre) {
-        //         menu.classList.remove("active");
-        //     }
-        // });
+        window.addEventListener("resize", function (event) {
+            if (window.innerWidth <= lagre) {
+                menu.classList.remove("active");
+            }
+        });
 
 
         function toggleMenu() {

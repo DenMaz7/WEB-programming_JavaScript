@@ -225,13 +225,12 @@ footer {
     }
     .menu{
         position: fixed;
-        left: 0;
+        left: -150%;
         top: 50px;
         gap: 0;
         flex-direction: column;
         background-color: #262626;
         width: 100%;
-        color: #fff;
         text-align: center;
         transition: 0.3s;
         z-index: 100;
